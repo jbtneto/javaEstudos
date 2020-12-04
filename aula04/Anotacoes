@@ -1,0 +1,10 @@
+Modularizacao
+
+- NomeDoMetodo(lista de parametros){
+    Corpo do Modulo
+    Retorno
+}
+Nome do Metodo: Valem as regras de nome de variaveis
+Lista de parametros: Opcional. tipos e nomes das variaveis que o metodo ira receber
+Corpo: instrucoes que realizam aq operacao pretendida.
+Tipo de Retorno: valo que o metodo retorna caso exista.
