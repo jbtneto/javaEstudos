@@ -1,0 +1,22 @@
+package exercicios.exercicio06_2;
+
+public class Professor extends Pessoa {
+    private double salario;
+
+    public Professor(String nome, String telefone, double salario) {
+        super(nome, telefone);
+        this.salario = salario;
+    }
+
+    @Override
+    public String exibir() {
+
+        return super.exibir() + salario;
+    }
+
+    @Override
+    public String toString() {
+
+        return super.toString() + "\nSalario = R$" + salario;
+    }
+}
