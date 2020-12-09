@@ -1,4 +1,4 @@
-package exercicios.exercicio06_3;
+package exercicios.exercicio06_4;
 
 public class ContaPoupanca extends Conta {
     private final double TAXA_SAQUE = 0.1;

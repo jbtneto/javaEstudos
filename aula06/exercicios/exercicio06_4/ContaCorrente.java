@@ -1,12 +1,11 @@
-package exercicios.exercicio06_3;
+package exercicios.exercicio06_4;
 
-public class ContaEspecial extends Conta {
-    private double limite;
+public class ContaCorrente extends Conta {
+
     private final double TAXA_DEPOSITO = 0.1;
 
-    public ContaEspecial(int contaNumero, double limite) {
+    public ContaCorrente(int contaNumero) {
         super(contaNumero);
-        this.limite = limite;
     }
 
     @Override
@@ -16,10 +15,9 @@ public class ContaEspecial extends Conta {
 
     @Override
     public boolean sacar(double valor) {
-        if (valor <= getSaldo() + limite) {
+        if (valor <= getSaldo()) {
             return super.sacar(valor);
         }
         return false;
-
     }
 }
