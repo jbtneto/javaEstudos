@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import br.neto.spring02.dao.UserDao;
+import br.neto.spring02.dto.UserDto;
 import br.neto.spring02.model.User;
 
 @RestController
@@ -49,15 +50,65 @@ public class UserController {
 
     } 
 
-    /*
-     * @GetMapping("/name/{name}") // {Nome da variavel} public ResponseEntity<User>
-     * BuscaPorId(@PathVariable String name){ // int id - nome precisa ser igual ao
-     * declarado no GETMAPPING User user = dao.f(name).orElse(null);
-     * 
-     * if(user != null){ return ResponseEntity.ok(user); // ok = 200 } return
-     * ResponseEntity.notFound().build(); // // not found 404
-     * 
-     * 
-     * }
-     */
+    @PostMapping("/email")
+    public ResponseEntity<UserDto> buscaPorEmail(@RequestBody User user) {
+        User userFinded = dao.findByEmail(user.getEmail());
+
+        if (userFinded != null) {
+            UserDto userDto = new UserDto(userFinded);
+            return ResponseEntity.ok(userDto);
+        }
+        return ResponseEntity.notFound().build();
+    }
+
+    @PostMapping("/loginemail")
+    public ResponseEntity<UserDto> loginPorEmail(@RequestBody User user) {
+        User userFinded = dao.findByEmailAndPassword(user.getEmail(), user.getPassword());
+
+        if (userFinded != null) {
+            UserDto userDto = new UserDto(userFinded);
+            return ResponseEntity.ok(userDto);
+        }
+        return ResponseEntity.notFound().build();
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<UserDto> login(@RequestBody User user) {
+        User userFinded = dao.findByEmailOrCpf(user.getEmail(), user.getCpf());
+
+        if (userFinded != null) {
+            if (user.getPassword().equals(userFinded.getPassword())) {
+                UserDto userDto = new UserDto(userFinded);
+                return ResponseEntity.ok(userDto); 
+            }
+            //return ResponseEntity.status(401).build();
+        }
+        return ResponseEntity.status(401).build();
+    }
+
+    @GetMapping("/id2/{id}")
+    public ResponseEntity<User> buscarPersonalizado(@PathVariable int id){
+        User userFinded = dao.buscaPorId(id);
+
+        if(userFinded != null){
+            return ResponseEntity.ok(userFinded);
+
+        }
+        return ResponseEntity.notFound().build();
+
+
+    }
+    @GetMapping("/id3/{id}")
+    public ResponseEntity<Object> buscarUserPersonalizado(@PathVariable int id){
+        Object userFinded = dao.buscarUsuariosPorId(id);
+
+        if(userFinded != null){
+            return ResponseEntity.ok(userFinded);
+
+        }
+        return ResponseEntity.notFound().build();
+
+
+    }
+
 }

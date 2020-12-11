@@ -1,0 +1,7 @@
+lombok, adicionar no pom.xml do projeto
+
+lombok annotations - utilizado para facilitar a declaracao de metodos GET e SET
+
+@Getter - constroi os metodos Get
+@Setter - Constroi os metodos SET
+@NoArgsConstructor - Controi os metodos padrao/vazio sem precisar escrever o codigo
