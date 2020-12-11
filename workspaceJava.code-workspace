@@ -20,6 +20,23 @@
 		},
 		{
 			"path": "aula07"
+		},
+		{
+			"name": "spring01",
+			"path": "aula08\\spring01"
+		},
+		{
+			"name": "spring02",
+			"path": "aula08\\spring02"
 		}
-	]
+	],
+	"settings": {
+		"java.configuration.updateBuildConfiguration": "interactive",
+		"files.exclude": {
+			"**/.classpath": true,
+			"**/.project": true,
+			"**/.settings": true,
+			"**/.factorypath": true
+		}
+	}
 }
